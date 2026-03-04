@@ -386,9 +386,7 @@ pub async fn run_gateway(host: &str, port: u16, config: Config) -> Result<()> {
     if is_public_bind(host) && config.tunnel.provider == "none" && !config.gateway.allow_public_bind
     {
         anyhow::bail!(
-            "🛑 Refusing to bind to {host} — gateway would be reachable outside localhost\n\
-             (for example from your local network, and potentially the internet\n\
-             depending on your router/firewall setup).\n\
+            "🛑 Refusing to bind to {host} — gateway would be exposed to the internet.\n\
              Fix: use --host 127.0.0.1 (default), configure a tunnel, or set\n\
              [gateway] allow_public_bind = true in config.toml (NOT recommended)."
         );
@@ -850,6 +848,8 @@ pub async fn run_gateway(host: &str, port: u16, config: Config) -> Result<()> {
         .route("/api/cron", post(api::handle_api_cron_add))
         .route("/api/cron/{id}", delete(api::handle_api_cron_delete))
         .route("/api/integrations", get(api::handle_api_integrations))
+        .route("/api/integrations/health/{service}", post(api::handle_api_integration_health))
+        .route("/api/restart", post(api::handle_api_restart))
         .route(
             "/api/doctor",
             get(api::handle_api_doctor).post(api::handle_api_doctor),

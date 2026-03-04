@@ -21,6 +21,7 @@ const translations: Record<Locale, Record<string, string>> = {
     'nav.cost': 'Cost Tracker',
     'nav.logs': 'Logs',
     'nav.doctor': 'Doctor',
+    'nav.control_panel': 'Control Panel',
 
     // Dashboard
     'dashboard.title': 'Dashboard',
@@ -205,6 +206,7 @@ const translations: Record<Locale, Record<string, string>> = {
     'nav.cost': 'Maliyet Takibi',
     'nav.logs': 'Kayitlar',
     'nav.doctor': 'Doktor',
+    'nav.control_panel': 'Kontrol Paneli',
 
     // Dashboard
     'dashboard.title': 'Kontrol Paneli',
@@ -389,6 +391,7 @@ const translations: Record<Locale, Record<string, string>> = {
     'nav.cost': '成本追踪',
     'nav.logs': '日志',
     'nav.doctor': '诊断',
+    'nav.control_panel': '控制面板',
 
     // Dashboard
     'dashboard.title': '仪表盘',

@@ -12,6 +12,7 @@ import Config from './pages/Config';
 import Cost from './pages/Cost';
 import Logs from './pages/Logs';
 import Doctor from './pages/Doctor';
+import ControlPanel from './pages/ControlPanel';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 import { setLocale, type Locale } from './lib/i18n';
 
@@ -23,7 +24,7 @@ interface LocaleContextType {
 
 export const LocaleContext = createContext<LocaleContextType>({
   locale: 'tr',
-  setAppLocale: (_locale: Locale) => {},
+  setAppLocale: (_locale: Locale) => { },
 });
 
 export const useLocaleContext = () => useContext(LocaleContext);
@@ -114,6 +115,7 @@ function AppContent() {
     <LocaleContext.Provider value={{ locale, setAppLocale }}>
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/control-panel" element={<ControlPanel />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/agent" element={<AgentChat />} />
           <Route path="/tools" element={<Tools />} />
@@ -125,6 +127,7 @@ function AppContent() {
           <Route path="/cost" element={<Cost />} />
           <Route path="/logs" element={<Logs />} />
           <Route path="/doctor" element={<Doctor />} />
+          <Route path="/control-panel" element={<ControlPanel />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

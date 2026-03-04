@@ -1,0 +1,42 @@
+{
+  "project_structure": {
+    "web_gui": "Built directly within `zeroclaw-gui` React package",
+    "route": "/control-panel"
+  },
+  "id_mapping_table": {
+    "card_model_registry": "models",
+    "card_tg_01": "channels_config.telegram",
+    "card_wa_01": "channels_config.whatsapp",
+    "card_routing_01": "model_routes",
+    "card_security_01": "autonomy"
+  },
+  "field_mappings": {
+    "card_model_registry": [
+      {"field": "provider_name", "type": "string", "description": "Name of the provider (e.g. openai, anthropic)"},
+      {"field": "model_id", "type": "string", "description": "Provider specific model identifier"},
+      {"field": "api_key", "type": "password", "description": "API key for the provider"},
+      {"field": "alias", "type": "string", "description": "Alias for internal routing"},
+      {"field": "is_default", "type": "boolean", "description": "Boolean flag for default model"}
+    ],
+    "card_tg_01": [
+      {"field": "status", "type": "enum", "values": ["active", "disabled"]},
+      {"field": "bot_token", "type": "password"},
+      {"field": "allowed_users", "type": "array"}
+    ],
+    "card_wa_01": [
+      {"field": "status", "type": "enum", "values": ["active", "disabled"]},
+      {"field": "mode", "type": "enum", "values": ["web", "cloud"]},
+      {"field": "access_token", "type": "password"},
+      {"field": "phone_number_id", "type": "string"},
+      {"field": "verify_token", "type": "string"},
+      {"field": "allowed_numbers", "type": "array"}
+    ]
+  },
+  "api_endpoints": {
+    "config_get": "GET /api/config",
+    "config_put": "PUT /api/config",
+    "service_restart": "POST /api/restart",
+    "health_check": "GET /api/integrations/health/:service"
+  },
+  "persistence_strategy": "Deep Merge based on ComponentID to prevent core config overwrites."
+}

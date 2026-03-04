@@ -11,12 +11,14 @@ import {
   DollarSign,
   Activity,
   Stethoscope,
+  SlidersHorizontal,
   X,
 } from 'lucide-react';
 import { t } from '@/lib/i18n';
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, labelKey: 'nav.dashboard' },
+  { to: '/control-panel', icon: SlidersHorizontal, labelKey: 'nav.control_panel' },
   { to: '/agent', icon: MessageSquare, labelKey: 'nav.agent' },
   { to: '/tools', icon: Wrench, labelKey: 'nav.tools' },
   { to: '/cron', icon: Clock, labelKey: 'nav.cron' },
